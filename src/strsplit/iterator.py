@@ -18,16 +18,20 @@ class SplitIter:
         return self
 
     def __next__(self) -> str:
-        if self._end >= len(self._text) or self._splitter.maxsplit == 0:
+        if self._start >= len(self._text):
             raise StopIteration
         _substr: str = self.__next_substr()
         if self._predicate(_substr):
             return self.__next__()
-        self._splitter.maxsplit -= 1
         return _substr
 
     def __next_substr(self) -> str:
+        if self._splitter.maxsplit == 0:
+            _substr = self._text[self._start:]
+            self._start = len(self._text)
+            return _substr
         self._end, _cap = self._splitter.find(self._text, self._start)
         _substr = self._text[self._start:self._end]
         self._start = _cap
+        self._splitter.maxsplit -= 1
         return _substr

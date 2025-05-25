@@ -36,9 +36,9 @@ def test_split_by_length_basic():
 
 def test_split_by_length_maxsplit():
     splitter = SplitByLength(length=2, maxsplit=2)
-    text = "abcdef"
+    text = "abcdefgh"
     result = split(text, splitter)
-    assert list(result) == ["ab", "cd", "ef"]
+    assert list(result) == ["ab", "cd", "efgh"]
 
 # Test SplitByAnyChar splitter
 
