@@ -1,0 +1,39 @@
+[project]
+name = "strsplit"
+version = "0.1.0"
+description = "A string splitting utility with customizable splitters and filtering."
+authors = [{ name = "Kessoum Khlaed", email = "khaled.kessoum@univ-bejaia.dz" }]
+readme = "README.md"
+requires-python = ">=3.13"
+keywords = ["string", "split", "utility", "filtering"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
+
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["strsplit"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+]
+
+[project.scripts]
+foo-cli = "strsplit.__main__:main"
