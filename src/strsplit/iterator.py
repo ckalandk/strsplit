@@ -1,16 +1,13 @@
 from .splitter import Splitter
-from typing import Callable, Optional, Iterator
+from typing import Iterator, Callable, Optional
+from itertools import islice
 
 
 class SplitIter:
 
-    def __init__(self, splitter: Splitter, text: str, Predicate: Optional[Callable[[str], bool]] = None):
+    def __init__(self, splitter: Splitter, text: str):
         self._splitter = splitter
         self._text = text
-        self._predicate: Callable[[str], bool] = \
-            Predicate if Predicate is not None else lambda x: False
-        if Predicate is not None and not callable(Predicate):
-            raise TypeError("Predicate must be a callable function")
         self._start: int = 0
         self._end: int = 0
 
@@ -18,20 +15,24 @@ class SplitIter:
         return self
 
     def __next__(self) -> str:
-        if self._start >= len(self._text):
+        if self._start > len(self._text):
             raise StopIteration
         _substr: str = self.__next_substr()
-        if self._predicate(_substr):
-            return self.__next__()
         return _substr
 
     def __next_substr(self) -> str:
-        if self._splitter.maxsplit == 0:
-            _substr = self._text[self._start:]
-            self._start = len(self._text)
-            return _substr
         self._end, _cap = self._splitter.find(self._text, self._start)
         _substr = self._text[self._start:self._end]
         self._start = _cap
-        self._splitter.maxsplit -= 1
         return _substr
+
+
+def make_iterator(splitter: Splitter, text: str,
+                  predicate: Optional[Callable[[str], bool]]) -> Iterator[str]:
+    """Factory function to create a SplitIter instance."""
+    it = SplitIter(splitter, text)
+    if predicate:
+        it = filter(predicate, it)
+    if splitter.maxsplit >= 0:
+        it = islice(it, splitter.maxsplit)
+    return it

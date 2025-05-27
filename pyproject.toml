@@ -33,4 +33,4 @@ packages = ["strsplit"]
 dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1"]
 
 [project.scripts]
-foo-cli = "strsplit.__main__:main"
+strsplit-cli = "strsplit.__main__:main"

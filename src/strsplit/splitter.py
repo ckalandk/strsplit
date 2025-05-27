@@ -26,6 +26,8 @@ class SplitByStr(Splitter):
 
     def __init__(self, delimiter: str, maxsplit: int = -1):
         super().__init__(maxsplit)
+        if delimiter == "":
+            raise ValueError("Delimiter must be a non-empty string")
         self._delim = delimiter
 
     def find(self, text: str, index: int) -> Tuple[int, int]:
@@ -42,6 +44,19 @@ class SplitByLength(Splitter):
         self._length = length
 
     def find(self, text: str, index: int) -> Tuple[int, int]:
-        if len(text) - index >= self._length:
-            return index + self._length, index + self._length
-        return index, len(text)
+        if index + self._length >= len(text):
+            return len(text), len(text) + 1
+        return index + self._length, index + self._length
+
+
+class SplitByAnyChar(Splitter):
+    def __init__(self, chars: str, maxsplit: int = -1):
+        super().__init__(maxsplit)
+        self._chars = set(chars)
+
+    def find(self, text: str, index: int) -> Tuple[int, int]:
+        while index < len(text) and text[index] not in self._chars:
+            index += 1
+        if index == len(text):
+            return index, index + 1
+        return index, index + 1
