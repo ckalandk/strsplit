@@ -1,0 +1,44 @@
+name: Test and Publish to TestPyPI
+
+on:
+  push:
+    branches: [main]  # Or use `tags` if you prefer to publish only on new versions
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'  # Adjust to your lowest supported version
+
+      - name: Install uv
+        run: |
+          pip install uv
+
+      - name: Install project dependencies
+        run: |
+          uv pip install -r requirements.txt
+          uv pip install pytest build twine
+
+      - name: Run tests
+        run: |
+          pytest
+
+      - name: Build the package
+        run: |
+          uv build
+
+      - name: Publish to TestPyPI
+        env:
+          UV_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          uv publish --index strsplit --token "$UV_TOKEN"
