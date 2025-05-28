@@ -1,5 +1,8 @@
 import pytest
 from strsplit import split, SplitByStr, SplitByLength, SplitByAnyChar
+from strsplit.__main__ import main
+from click.testing import CliRunner
+from typing import Any
 
 
 def always_false(_: str) -> bool:
@@ -154,15 +157,22 @@ def test_split_with_predicat():
 
 
 @pytest.mark.split_with_predicat
-def test_split_with_predicate_all_true():
+def test_split_with_predicate_always_true():
     text = "1,2,3,4"
-    it = split(text, ",", lambda x: int(x) > 0)
+    it = split(text, ",", always_true)
     assert list(it) == ["1", "2", "3", "4"]
 
 
 @pytest.mark.split_with_predicat
+def test_split_with_predicate_always_false():
+    text = "1,2,3,4"
+    it = split(text, ",", always_false)
+    assert list(it) == []
+
+
+@pytest.mark.split_with_predicat
 def test_split_with_predicate_skip_empty_substr():
-    text = "1,,2,"
+    text = ",1,,2,"
     it = split(text, ",", lambda x: len(x) > 0)
     assert list(it) == ["1", "2"]
 
@@ -172,3 +182,43 @@ def test_split_given_max_split():
     text = "1,2,3,4,5,6"
     it = split(text, (",", 3))
     assert list(it) == ["1", "2", "3"]
+
+
+@pytest.mark.split_with_maxsplit
+def test_split_given_max_split_zero_length():
+    text = "1,2,3,4,5,6"
+    it = split(text, (",", 0))
+    assert list(it) == []
+
+
+@pytest.mark.split_cli
+def test_split_cli(tmp_path: Any):
+    test_file = tmp_path / "input.txt"
+    test_file.write_text("a,b;c")
+
+    runner = CliRunner()
+    result = runner.invoke(main, ['--delimiters', ',;'] + [str(test_file)])
+    assert result.exit_code == 0
+    assert result.output.strip() == "a\nb\nc"
+
+
+@pytest.mark.split_cli
+def test_split_cli_file_not_found():
+    test_file = "non_existent_file.txt"
+    runner = CliRunner()
+    result = runner.invoke(main, ['--delimiters', ',;'] + [test_file])
+
+    assert result.exit_code != 0
+    assert "Error: File 'non_existent_file.txt' not found." in result.output
+
+
+@pytest.mark.split_cli
+def test_split_cli_no_delimiters(tmp_path: Any):
+    test_file = tmp_path / "input.txt"
+    test_file.write_text("a b\nc")
+
+    runner = CliRunner()
+    result = runner.invoke(main, [str(test_file)])
+
+    assert result.exit_code == 0
+    assert result.output.strip() == "a\nb\nc"
