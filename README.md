@@ -1,6 +1,11 @@
 # strsplit
 
+![Test & Publish](https://github.com/ckalandk/strsplit/actions/workflows/test-and-publish.yml/badge.svg)
+![PyPI](https://img.shields.io/pypi/v/strsplit)
+![Python Version](https://img.shields.io/pypi/pyversions/strsplit)
+
 A flexible string splitting utility for Python that allows splitting by different strategies and filtering the results using predicates.
+This package is inspired by the abseil StrSplit library.
 
 ## Features
 
