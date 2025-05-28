@@ -16,8 +16,8 @@ def main(delimiters: str, input_file: str):
     except FileNotFoundError:
         print(f"Error: File '{input_file}' not found.", file=sys.stderr)
         sys.exit(1)
-
-    result = split(content, SplitByAnyChar(delimiters))
+    _delimiters = bytes(delimiters, "utf-8").decode("unicode_escape")
+    result = split(content, SplitByAnyChar(_delimiters))
 
     for part in result:
         click.echo(part)
