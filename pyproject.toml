@@ -1,10 +1,10 @@
 [project]
 name = "strsplit"
-version = "0.1.0"
+version = "0.1.2"
 description = "A string splitting utility with customizable splitters and filtering."
 authors = [{ name = "Kessoum Khaled", email = "khaled.kessoum@univ-bejaia.dz" }]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 keywords = ["string", "split", "utility", "filtering"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -28,6 +28,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 package-dir = { "" = "src" }
 packages = ["strsplit"]
+
+[tool.setuptools.package-data]
+"strsplit" = ["py.typed"]
 
 [dependency-groups]
 dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1"]
