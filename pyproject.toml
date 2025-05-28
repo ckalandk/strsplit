@@ -14,13 +14,11 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
-dependencies = [
-    "click>=8.2.1",
-]
+dependencies = ["click>=8.2.1"]
 
 [project.urls]
 Homepage = "https://github.com/ckalandk/strsplit"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Issues = "https://github.com/pypa/strsplit/issues"
 
 
 [build-system]
@@ -36,3 +34,9 @@ dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1"]
 
 [project.scripts]
 strsplit-cli = "strsplit.__main__:main"
+
+[[tool.uv.index]]
+name = "strsplit"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
