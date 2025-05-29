@@ -43,7 +43,7 @@ dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1"]
 strsplit-cli = "strsplit.__main__:main"
 
 [[tool.uv.index]]
-name = "strsplit"
+name = "textsplit"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
