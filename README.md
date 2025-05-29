@@ -3,7 +3,6 @@
 A flexible string splitting utility for Python that allows splitting by different strategies and filtering the results using predicates.
 This package is inspired by the abseil StrSplit library.
 
-![Test & Publish](https://github.com/ckalandk/strsplit/actions/workflows/test-and-publish.yml/badge.svg)
 ![PyPI](https://img.shields.io/pypi/v/strsplit)
 ![Python Version](https://img.shields.io/pypi/pyversions/strsplit)
 [![Supported Versions](https://img.shields.io/pypi/pyversions/requests.svg)]
@@ -37,7 +36,7 @@ it = split(",a,,b,c,", ",", lambda x : len(x) > 0)
 print(list(it)) # --> ['a', 'b', 'c']
 
 # Limit the number of substr
-# Every splitter accepts a another paramter maxsplit to limit the number of substrs
-it = split(text="a,b,c,d", SplitByStr(",", 2))
+# Every splitter accepts another parameter maxsplit to limit the number of splits
+it = split(text="a,b,c,d", SplitByStr(delimiter=",", maxsplit=2))
 print(list(it)) # --> ['a', 'b']
 ```

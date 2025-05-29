@@ -18,7 +18,10 @@ classifiers = [
 ]
 license = { file = "LICENSE" }
 
-dependencies = ["click>=8.2.1"]
+dependencies = [
+    "click>=8.2.1",
+    "pre-commit>=4.2.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/ckalandk/strsplit"
@@ -28,6 +31,14 @@ Issues = "https://github.com/ckalandk/strsplit/issues"
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "tab"
+docstring-code-format = true
 
 [tool.setuptools]
 package-dir = { "" = "src" }
