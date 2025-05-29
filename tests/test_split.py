@@ -25,6 +25,14 @@ class TestSplitApi:
         it = split(self.text, (",", 3))
         assert list(it) == ['a', 'b', 'c']
 
+    def test_splitter_param_list(self):
+        it = split("a,b;c", [",", ";"])
+        assert list(it) == ['a', 'b', 'c']
+
+    def test_splitter_param_int(self):
+        it = split(self.text, 2)
+        assert list(it) == ['a,', 'b,', 'c']
+
     def test_splitter_param_none(self):
         _text = "a b\nc"
         it = split(_text)
@@ -32,7 +40,7 @@ class TestSplitApi:
 
     def test_splitter_wrong_params(self):
         with pytest.raises(TypeError):
-            split(self.text, 1)
+            split(self.text, 2.4)
 
 
 @pytest.mark.split_by_str

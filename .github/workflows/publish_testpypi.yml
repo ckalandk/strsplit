@@ -1,8 +1,10 @@
-name: Test and Publish to TestPyPI
+name: Publish to TestPyPI
 
 on:
   push:
-    branches: [main]  # Or use `tags` if you prefer to publish only on new versions
+    tags: 
+      - 'v*.*.*'  # Trigger on version tags like v1.0.0
+  workflow_dispatch: 
 
 permissions:
   contents: read
@@ -28,10 +30,6 @@ jobs:
       - name: Install the project
         run: uv sync --locked --all-extras --dev
 
-      - name: Run tests
-        # For example, using `pytest`
-        run: uv run pytest tests
-        
       - name: Build the package
         run: |
           uv build

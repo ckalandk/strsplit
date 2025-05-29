@@ -1,5 +1,5 @@
 from typing import Callable, Optional, Any, Iterator
-from .splitter import Splitter, SplitByStr, SplitByAnyChar
+from .splitter import Splitter, SplitByStr, SplitByAnyChar, SplitByLength
 from .iterator import make_iterator
 
 
@@ -15,10 +15,14 @@ def split(text: str, splitter: Any = None,
     """
     _splitter = None
     match splitter:
+        case int():
+            _splitter = SplitByLength(splitter)
         case str():
             _splitter = SplitByStr(splitter)
         case (_s, _num) if isinstance(_s, str) and isinstance(_num, int):
             _splitter = SplitByStr(delimiter=_s, maxsplit=_num)
+        case list() if all(isinstance(i, str) for i in splitter):  # type: ignore
+            _splitter = SplitByAnyChar(chars="".join(splitter))  # type: ignore
         case None:
             _splitter = SplitByAnyChar(" \n\r\t\f")
         case Splitter():

@@ -1,24 +1,28 @@
 [project]
 name = "strsplit"
-version = "0.1.5"
+version = "1.0.0"
 description = "A string splitting utility with customizable splitters and filtering."
 authors = [{ name = "Kessoum Khaled", email = "khaled.kessoum@univ-bejaia.dz" }]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 keywords = ["string", "split", "utility", "filtering"]
+
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
 ]
+license = { file = "LICENSE" }
+
 dependencies = ["click>=8.2.1"]
 
 [project.urls]
 Homepage = "https://github.com/ckalandk/strsplit"
-Issues = "https://github.com/pypa/strsplit/issues"
+Issues = "https://github.com/ckalandk/strsplit/issues"
 
 
 [build-system]
