@@ -38,4 +38,4 @@ jobs:
         env:
           UV_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
         run: |
-          uv publish --index textsplit --token "$UV_TOKEN"
+          uv publish --index strsplitter --token "$UV_TOKEN"
