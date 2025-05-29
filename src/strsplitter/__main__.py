@@ -1,5 +1,5 @@
-from strsplit.splitter import SplitByAnyChar
-from .strsplit import split
+from strsplitter.splitter import SplitByAnyChar
+from .strsplitter import split
 import click
 import sys
 

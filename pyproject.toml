@@ -1,5 +1,5 @@
 [project]
-name = "strsplit"
+name = "strsplitter"
 version = "1.0.0"
 description = "A string splitting utility with customizable splitters and filtering."
 authors = [{ name = "Kessoum Khaled", email = "khaled.kessoum@univ-bejaia.dz" }]
@@ -31,7 +31,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
-packages = ["strsplit"]
+packages = ["strsplitter"]
 
 [tool.setuptools.package-data]
 "strsplit" = ["py.typed"]
@@ -40,10 +40,10 @@ packages = ["strsplit"]
 dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1"]
 
 [project.scripts]
-strsplit-cli = "strsplit.__main__:main"
+strsplit-cli = "strsplitter.__main__:main"
 
 [[tool.uv.index]]
-name = "textsplit"
+name = "strsplitter"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true

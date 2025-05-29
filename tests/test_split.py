@@ -1,6 +1,6 @@
 import pytest
-from strsplit import split, SplitByStr, SplitByLength, SplitByAnyChar
-from strsplit.__main__ import main
+from strsplitter import split, SplitByStr, SplitByLength, SplitByAnyChar
+from strsplitter.__main__ import main
 from click.testing import CliRunner
 from typing import Any
 

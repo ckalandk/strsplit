@@ -1,4 +1,4 @@
-from .strsplit import split
+from .strsplitter import split
 from .splitter import Splitter, SplitByStr, SplitByLength, SplitByAnyChar
 
 
