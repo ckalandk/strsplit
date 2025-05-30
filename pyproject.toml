@@ -18,7 +18,9 @@ classifiers = [
 ]
 license = { file = "LICENSE" }
 
-dependencies = ["click>=8.2.1", "pre-commit>=4.2.0"]
+dependencies = [
+    "click>=8.2.1",
+]
 
 [project.urls]
 Homepage = "https://github.com/ckalandk/strsplit"
@@ -56,7 +58,12 @@ packages = ["strsplitter"]
 "strsplit" = ["py.typed"]
 
 [dependency-groups]
-dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1", "tomli>=2.2.1"]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.3.5",
+ "pytest-cov>=6.1.1",
+ "tomli>=2.2.1",
+]
 
 [project.scripts]
 strsplit-cli = "strsplitter.__main__:main"

@@ -281,24 +281,22 @@ version = "1.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
-    { name = "pre-commit" },
 ]
 
 [package.dev-dependencies]
 dev = [
+    { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "tomli" },
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "click", specifier = ">=8.2.1" },
-    { name = "pre-commit", specifier = ">=4.2.0" },
-]
+requires-dist = [{ name = "click", specifier = ">=8.2.1" }]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "pre-commit", specifier = ">=4.2.0" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "pytest-cov", specifier = ">=6.1.1" },
     { name = "tomli", specifier = ">=2.2.1" },
