@@ -45,7 +45,11 @@ packages = ["strsplitter"]
 "strsplit" = ["py.typed"]
 
 [dependency-groups]
-dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1"]
+dev = [
+    "pytest>=8.3.5",
+ "pytest-cov>=6.1.1",
+ "tomli>=2.2.1",
+]
 
 [project.scripts]
 strsplit-cli = "strsplitter.__main__:main"

@@ -17,3 +17,10 @@ repos:
   rev: 0.7.3
   hooks:
     - id: uv-export
+- repo: local
+  hooks:
+    - id: version-sync-check
+      name: Check version consistency
+      entry: python .hooks/check_versions_match.py
+      language: system
+      types: [python]
