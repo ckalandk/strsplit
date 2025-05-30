@@ -6,7 +6,7 @@ This package is inspired by the abseil StrSplit library.
 [![PyPI version](https://img.shields.io/pypi/v/strsplitter.svg)](https://pypi.org/project/strsplitter/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/strsplitter.svg)](https://pypi.org/project/strsplitter/)
 [![Build](https://github.com/ckalandk/strsplit/actions/workflows/test.yml/badge.svg)](https://github.com/ckalandk/strsplit/actions)
-[![License](https://img.shields.io/github/license/ckalandk/strsplitter.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/ckalandk/strsplit.svg)](LICENSE)
 
 ## Features
 
