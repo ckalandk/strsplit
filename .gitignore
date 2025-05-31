@@ -9,6 +9,6 @@ temp
 *.tmp
 docs/build/
 *.ipynb
-
+.vscode
 # Virtual environments
 .venv
