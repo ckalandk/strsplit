@@ -1,6 +1,6 @@
 [project]
 name = "strsplitter"
-version = "1.0.1"
+version = "1.0.2"
 description = "A string splitting utility with customizable splitters and filtering."
 authors = [{ name = "Kessoum Khaled", email = "khaled.kessoum@univ-bejaia.dz" }]
 readme = "README.md"
@@ -18,9 +18,7 @@ classifiers = [
 ]
 license = { file = "LICENSE" }
 
-dependencies = [
-    "click>=8.2.1",
-]
+dependencies = ["click>=8.2.1"]
 
 [project.urls]
 Homepage = "https://github.com/ckalandk/strsplit"
