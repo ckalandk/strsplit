@@ -4,7 +4,7 @@ from itertools import islice
 from .splitter import Splitter
 
 
-class SplitIter:
+class SplitIter(Iterator[str]):
     """An iterator for splitting a string using a specified splitter."""
 
     def __init__(self, splitter: Splitter, text: str):
