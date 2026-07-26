@@ -39,6 +39,7 @@ print(list(it)) # --> ['a', 'b', 'c']
 # Limit the number of substr
 # Every splitter accepts another parameter maxsplit to limit the number of splits
 it = split(text="a,b,c,d", SplitByStr(delimiter=",", maxsplit=2))
+```
 
 ## Acknowledgements
 
