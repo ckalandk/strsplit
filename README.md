@@ -39,10 +39,9 @@ print(list(it)) # --> ['a', 'b', 'c']
 # Limit the number of substr
 # Every splitter accepts another parameter maxsplit to limit the number of splits
 it = split(text="a,b,c,d", SplitByStr(delimiter=",", maxsplit=2))
+print(list(it)) # --> ['a', 'b']
 ```
 
 ## Acknowledgements
 
 This library was inspired by the C++ library **abseil**.
-print(list(it)) # --> ['a', 'b']
-```
